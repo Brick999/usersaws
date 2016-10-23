@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rails User Management System III</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <h2>Listing Users</h2>
+    	<table class="table table-hover">
+    		<thead>
+    			<th>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th>Action</th>
+                    </tr>         
+                </th>	
+    		</thead>
+    		<tbody>
+    			<% @users.each do |user| %> 
+                    <tr>
+                        <td><%= user.first_name %></td>
+                        <td><%= user.last_name %></td>
+                        <td><%= user.email %></td>
+                        <td>
+                            <a href="/users/<%= user.id %>">Show</a>
+                            <a href="/users/<%= user.id %>/edit">Edit</a>
+                            <form action="/users/<%= user.id %>" method="post">
+                                <input type='hidden' name="authenticity_token" value="<%= form_authenticity_token %>">
+                                <input type='hidden' name="_method" value="delete">
+                                <button type="submit">Destroy</button>     
+                            </form>
+                        </td>
+                    </tr>              
+                <% end %>
+    		</tbody>
+    	</table>
+      	<form action="/users/new">
+        	<button type="submit" class="btn btn-success">New User</button>
+      	</form>
+    </div>
+  </body>
+</html>
+

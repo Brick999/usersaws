@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rails User Management System III</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    	<div class="panel">
+    		<h2> User Profile </h2>
+    	</div>
+    	<div>
+    		<h3><%= @user.first_name + " " + @user.last_name%>'s information</h3>
+    		<p>Email: <%= @user.email%></p>
+    	</div> 
+
+    	<div>
+    		<a href="/users/<%= @user.id%>/edit" class="btn btn-info">Edit</a>
+    	</div>
+    	<div>
+    		<a href="/users" class="btn btn-info">Back</a>
+    	</div>
+    </div>
+  </body>
+</html>
+
+
+
+
